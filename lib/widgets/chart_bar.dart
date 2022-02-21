@@ -11,8 +11,11 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FittedBox(
-          child: Text('\$$spendingAmount'),
+        Container(
+          height: 20,
+          child: FittedBox(
+            child: Text('\$$spendingAmount'),
+          ),
         ),
         SizedBox(
           height: 5,
@@ -20,27 +23,34 @@ class ChartBar extends StatelessWidget {
         Container(
           height: 60,
           width: 10,
-          child: Stack(children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-                color: Color.fromRGBO(220, 220, 220, 1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            FractionallySizedBox(
-              heightFactor: spendingPercentage,
-              child: Container(
+          child: Stack(
+            children: [
+              Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                  color: Color.fromRGBO(220, 220, 220, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-            )
-          ]),
+              Container(
+                height: 60,
+                width: 10,
+                child: FractionallySizedBox(
+                  heightFactor: spendingPercentage,
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(
           height: 5,
