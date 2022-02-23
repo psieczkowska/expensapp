@@ -14,14 +14,14 @@ class AdaptiveButton extends StatelessWidget {
             onPressed: handler,
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           )
         : TextButton(
             onPressed: handler,
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           );
   }

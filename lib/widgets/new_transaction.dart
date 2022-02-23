@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../widgets/adaptive_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
-  NewTransaction(this.addTransaction);
+  const NewTransaction(this.addTransaction);
 
   @override
   State<NewTransaction> createState() => _NewTransactionState();
@@ -14,7 +14,7 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleControler = TextEditingController();
   final _amountControler = TextEditingController();
-  DateTime? _selectedDate = null;
+  DateTime? _selectedDate;
   void _submitData() {
     final enteredTitle = _titleControler.text;
     final enteredAmount = double.parse(_amountControler.text);
@@ -60,27 +60,21 @@ class _NewTransactionState extends State<NewTransaction> {
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Title',
             ),
             controller: _titleControler,
             onSubmitted: (_) => _submitData,
             onEditingComplete: _submitData,
-            onChanged: (value) {
-              print(_titleControler.text);
-            },
           ),
           TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Amount',
             ),
             controller: _amountControler,
             keyboardType: TextInputType.number,
             onSubmitted: (_) => _submitData,
             onEditingComplete: _submitData,
-            onChanged: (value) {
-              print(_amountControler.text);
-            },
           ),
           Container(
             height: 70,
@@ -99,7 +93,7 @@ class _NewTransactionState extends State<NewTransaction> {
           ),
           ElevatedButton(
             onPressed: _submitData,
-            child: Text('Add Transaction'),
+            child: const Text('Add Transaction'),
           )
         ],
       ),
